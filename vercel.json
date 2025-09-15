@@ -1,6 +1,0 @@
-{
-  "buildCommand": "mkdir -p out && cp web/index.html out/ && cp web/style.css out/ 2>/dev/null || true",
-  "outputDirectory": "out",
-  "installCommand": "echo 'no npm install needed'",
-  "framework": null
-}
