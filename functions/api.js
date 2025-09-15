@@ -12,7 +12,7 @@ const get = url => new Promise((res, rej) => https.get(url, {headers:{'User-Agen
 
 /* ---------- fetch real #betonbangers casts ---------- */
 async function fetchChannelCasts() {
-  const { messages } = await get('https://hub.pinata.cloud/v1/casts?reverse=true&limit=300');
+  const { messages } = await get('https://hub.pinata.cloud/v1/casts?reverse=true&limit=200');
   return messages
     .filter(m => /#?betonbangers/i.test(m.data.castAddBody.text))
     .map(m => ({
@@ -26,8 +26,8 @@ async function fetchChannelCasts() {
 exports.handler = async (ev) => {
   const hdr = {'Content-Type':'application/json'};
 
-  /* ---- GET /api/casts ---- */
-  if (ev.httpMethod === 'GET' && ev.path === '/api/casts') {
+  /* ---- GET /casts  (Netlify strips /api) ---- */
+  if (ev.httpMethod === 'GET' && ev.path === '/casts') {
     const live = await fetchChannelCasts();
     const local = read();
     const merged = live.map(c => {
@@ -37,8 +37,8 @@ exports.handler = async (ev) => {
     return {statusCode:200, headers:hdr, body:JSON.stringify(merged)};
   }
 
-  /* ---- POST /api/like ---- */
-  if (ev.httpMethod === 'POST' && ev.path === '/api/like') {
+  /* ---- POST /like ---- */
+  if (ev.httpMethod === 'POST' && ev.path === '/like') {
     const {castHash} = JSON.parse(ev.body || '{}');
     if (!castHash) return {statusCode:400, headers:hdr, body:JSON.stringify({error:'missing castHash'})};
     const list = read();
@@ -54,4 +54,3 @@ exports.handler = async (ev) => {
 
   return {statusCode:404, headers:hdr, body:JSON.stringify({error:'not found'})};
 };
-                                
