@@ -1,0 +1,15 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjEyMzQ1LCJ0eXBlIjoiY3VzdG9keSJ9",
+    "payload": "eyJkb21haW4iOiJiYW5nZXJzLW1pbmlhcHAubmV0bGlmeS5hcHAifQ",
+    "signature": "MHgwLi4u"
+  },
+  "frame": {
+    "version": "1",
+    "name": "$Bangers",
+    "iconUrl": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>",
+    "homeUrl": "https://bangers-miniapp.netlify.app",
+    "splashImageUrl": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1242 2208'><rect width='1242' height='2208' fill='%23111'/><text x='50%' y='50%' font-size='400' text-anchor='middle' dominant-baseline='middle'>💥</text></svg>",
+    "splashBackgroundColor": "#111111"
+  }
+}
